@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">generic client</a>
+  <div style="width: 100%; text-align: right;">
+    <ng-container *ngIf="!(sessionService.session$ | async)?.status || (sessionService.session$ | async)?.status === 'inactive'; else loggedIn">
+      <button class="btn btn-outline-light" (click)="navigateToLogin()">Login</button>
+    </ng-container>
+    <ng-template #loggedIn>
+      <div class="dropdown">
+        <button
+          class="btn btn-outline-light dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Hi, {{ (sessionService.session$ | async)?.user?.firstName }}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="/user">Manage Account</a></li>
+          <li><a class="dropdown-item" (click)="toggleVerifyPhone()">Toggle Verify Phone</a></li>
+          <li><a class="dropdown-item" href="/refer">Refer A Friend</a></li>
+          <li><a class="dropdown-item dngr" (click)="logout()">Log Out</a></li>
+        </ul>
+      </div>
+    </ng-template>
+  </div>
+</nav>

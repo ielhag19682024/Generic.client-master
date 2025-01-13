@@ -1,0 +1,108 @@
+<div class="referal-container mt-2">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header bg-dark text-white">
+            <h4>Manage Account</h4>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit()">
+                <div class="body-container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                          <h4>Basic Details</h4>
+                        </div>
+                        <div class="col-lg-8">
+                          <div class="form-group mb-3">
+                              <label for="firstName" style="text-align: left; width: 100%;">First Name</label>
+                              <input
+                              type="text"
+                              id="firstName"
+                              class="form-control"
+                              [(ngModel)]="firstName"
+                              name="firstName"
+                              placeholder="eg. John"
+                              (keyup)="validateInput('firstName')"
+                              disabled
+                              />
+                              <small class="text-danger" *ngIf="firstNameError">{{ firstNameError }}</small>
+                          </div>
+                            <div class="form-group mb-3">
+                                <label for="lastName" style="text-align: left; width: 100%;">Last Name</label>
+                                <input
+                                type="text"
+                                id="lastName"
+                                class="form-control"
+                                [(ngModel)]="lastName"
+                                name="lastName"
+                                placeholder="eg. Doe"
+                                (keyup)="validateInput('lastName')"
+                                disabled
+                                />
+                                <small class="text-danger" *ngIf="lastNameError">{{ lastNameError }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4">
+                          <h4>Contact Details</h4>
+                        </div>
+                        <div class="col-lg-8">
+                          <div class="form-group mb-3">
+                              <label for="email" style="text-align: left; width: 100%;">Email <span class="form-action" style="float: right;">Edit</span></label>
+                              <input
+                              type="text"
+                              id="email"
+                              class="form-control"
+                              [(ngModel)]="email"
+                              name="email"
+                              placeholder="eg. test@email.com"
+                              (keyup)="validateInput('email')"
+                              required
+                              />
+                              <small class="text-danger" *ngIf="emailError">{{ emailError }}</small>
+                          </div>
+                          <div class="form-group mb-3">
+                              <label for="phone" style="text-align: left; width: 100%;">Phone Number</label>
+                              <input
+                              type="text"
+                              id="phone"
+                              class="form-control"
+                              [(ngModel)]="phone"
+                              name="phone"
+                              placeholder="eg. +911234567890"
+                              (keyup)="validateInput('phone')"
+                              required
+                              />
+                              <span class="text-danger" *ngIf="phoneError">{{ phoneError }}</span>
+                          </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <h4>Security</h4>
+                      </div>
+                      <div class="col-lg-8">
+                        <button type="button" class="btn btn-secondary" (click)="resetPassword()">Reset Password</button>
+                        <button type="button" class="btn btn-danger mx-2" (click)="deactivateAccount()">Deactivate Account</button>
+                        <br>
+                      </div>
+                    </div>
+                </div>
+              <div class="d-flex justify-content-end">
+                <div>
+                  <!-- <button type="submit" class="btn btn-dark">Update</button> -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-user-reset-password></app-user-reset-password>
+  <app-user-deactivate-account></app-user-deactivate-account>
+  

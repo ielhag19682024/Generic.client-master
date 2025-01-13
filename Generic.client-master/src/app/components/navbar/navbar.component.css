@@ -1,0 +1,23 @@
+.navbar{
+    padding: 10px 20px;
+}
+
+.dropdown-menu {
+    min-width: 150px;
+    text-align: left;
+  }
+  
+  .dropdown-item {
+    cursor: pointer;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #343a40;
+  }
+  
+  .dngr:hover {
+    background-color: #dc3545;
+    color: white;
+  }
+  

@@ -1,0 +1,15 @@
+.referal-container {
+    display: block;
+    border-radius: 5px;
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  .body-container{
+    padding: 20px;
+  }
+
+  .form-action{
+    font-size: 12px;
+    cursor: pointer;
+  }

@@ -1,0 +1,27 @@
+/* .homeGrid{
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    height: 375px;
+    background-color: whitesmoke;
+} */
+
+.title{
+    background-color: #424649;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px 20px
+}
+
+
+.homeGrid {
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    min-height: 375px; */
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -3px -3px 8px rgba(255, 255, 255, 0.5);
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }

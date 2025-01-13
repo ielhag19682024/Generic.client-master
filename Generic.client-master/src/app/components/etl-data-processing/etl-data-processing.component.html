@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="btn-group">
+    <button
+      class="btn"
+      [class.active]="selectedView === 'upload'"
+      (click)="switchView('upload')"
+    >
+      Upload
+    </button>
+    <button
+      class="btn"
+      [class.active]="selectedView === 'download'"
+      (click)="switchView('download')"
+    >
+      Download
+    </button>
+  </div>
+
+  <div class="content">
+    <app-etl-upload *ngIf="selectedView === 'upload'"></app-etl-upload>
+    <app-etl-download *ngIf="selectedView === 'download'"></app-etl-download>
+  </div>
+</div>
+  

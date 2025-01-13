@@ -1,0 +1,53 @@
+<div class="modal fade" id="verifyPhoneModal" tabindex="-1" aria-labelledby="verifyPhoneModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="verifyPhoneModalLabel">Verify Your Phone</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- Initial Buttons for SMS and Voice -->
+        <div *ngIf="!isOtpSent">
+          <p>Select a verification method for {{ phoneNumber }}:</p>
+          <button class="btn btn-dark w-100 mb-2" (click)="sendOtp('sms')">
+            Verify via SMS
+          </button>
+          <button class="btn btn-light w-100" (click)="sendOtp('call')">
+            Verify via Voice
+          </button>
+        </div>
+
+        <!-- OTP Input Section -->
+        <div *ngIf="isOtpSent">
+          <p>Enter the verification code sent to {{ phoneNumber }}:</p>
+          <input
+            type="text"
+            class="form-control mt-3"
+            placeholder="Enter verification code"
+            [(ngModel)]="verificationCode"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          Close
+        </button>
+        <!-- Verify Button -->
+        <button
+          *ngIf="isOtpSent"
+          type="button"
+          class="btn btn-primary"
+          (click)="verifyOtp()"
+          [disabled]="!verificationCode"
+        >
+          Verify
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

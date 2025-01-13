@@ -1,0 +1,40 @@
+<div class="form-container">
+    <form [formGroup]="downloadForm" (ngSubmit)="onDownload()">
+      <div>
+        <label for="symbol">Symbol:</label>
+        <select id="symbol" formControlName="symbol">
+          <option value="">Select Symbol</option>
+          <option value="AAPL">AAPL</option>
+          <option value="GOOGL">GOOGL</option>
+          <option value="MSFT">MSFT</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="dateRange">Date Range:</label>
+        <input id="dateRange" type="datetime-local" formControlName="dateRange" />
+      </div>
+  
+      <div>
+        <label for="columns">Columns:</label>
+        <select id="columns" formControlName="columns">
+          <option value="">Select Columns</option>
+          <option value="Price">Price</option>
+          <option value="Volume">Volume</option>
+          <option value="MarketCap">Market Cap</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="reportType">Report Type:</label>
+        <select id="reportType" formControlName="reportType">
+          <option value="">Select Report Type</option>
+          <option value="Summary">Summary</option>
+          <option value="Detailed">Detailed</option>
+        </select>
+      </div>
+  
+      <button class="btn btn-dark" type="submit">Download</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,38 @@
+<div class="home-container">
+  <div class="dashboard-container" *ngIf="session.status === 'active'; else loggedOut">
+        <ng-container *ngIf="session.user.phoneVerified; else showVerificationContainer">
+          <app-dashboard></app-dashboard>
+        </ng-container>
+  </div>
+
+  
+  <ng-template #showVerificationContainer>
+    <div class="unverified-container">
+      <p>
+        Please verify your phone number to access the dashboard.
+      </p> 
+      <button class="btn btn-dark" (click)="verifyPhone()">Verify Phone</button>
+      <app-phone-verification [phoneNumber]="session.user.phone" [phoneVerified]="session.user.phoneVerified"></app-phone-verification>
+    </div>
+  </ng-template>
+
+  <ng-template #loggedOut>
+    <div class="landing-container">
+        <p>
+          You are not logged in.
+        </p>
+        <button class="btn btn-dark" (click)="redirectToLogin()">Login</button>
+        <p class="mt-5">
+          Don't have an account? <a href="/signup" style="cursor: pointer;">Sign Up</a>
+        </p>
+    </div>
+  </ng-template>
+
+
+</div>
+
+<style>
+  .homeGrid {
+    margin: 2px;
+  }
+</style>

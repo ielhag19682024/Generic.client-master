@@ -1,0 +1,2 @@
+open the "generic.client" folder in terminal and run
+ng server --ssl

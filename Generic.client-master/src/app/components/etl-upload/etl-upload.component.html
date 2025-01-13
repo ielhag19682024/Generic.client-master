@@ -1,0 +1,67 @@
+<div class="form-container">
+    <form [formGroup]="etlForm" (ngSubmit)="onUpload()">
+      <div>
+        <label for="country">Country:</label>
+        <select id="country" formControlName="country">
+          <option value="0">Select Country</option>
+          <option value="1">USA</option>
+          <option value="2">CanAT</option>
+          <option value="3">CanDash</option>
+          <option value="4">CanWeb</option>
+          <option value="5">IND</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="dbType">DB Type:</label>
+        <select id="dbType" formControlName="dbType">
+          <option value="0">Select DB Type</option>
+          <option value="1">SQL Server</option>
+          <option value="2">Oracle</option>
+          <option value="3">PostgreSQL</option>
+          <option value="4">MySQL</option>
+          <option value="5">MariaDB</option>
+          <option value="6">MongoDB</option>
+          <option value="7">DynamoDB</option>
+          <option value="8">CosmoDB</option>
+          <option value="9">VectorDB</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="dbServerName">DB Server Name:</label>
+        <input id="dbServerName" type="text" formControlName="dbServerName" />
+      </div>
+  
+      <div>
+        <label for="dbName">DB Name:</label>
+        <input id="dbName" type="text" formControlName="dbName" />
+      </div>
+  
+      <div>
+        <label for="tableName">Table Name:</label>
+        <input id="tableName" type="text" formControlName="tableName" />
+      </div>
+  
+      <div>
+        <label for="tableType">Table Type:</label>
+        <select id="tableType" formControlName="tableType">
+          <option value="0">Select Table Type</option>
+          <option value="1">Row Based</option>
+          <option value="2">Column Based</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="file">Upload File:</label>
+        <input
+          id="file"
+          type="file"
+          (change)="onFileChange($event)"
+        />
+      </div>
+  
+      <button class="btn btn-dark" type="submit">Upload</button>
+    </form>
+  </div>
+  
