@@ -37,6 +37,6 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_MUSHROOM_07E2D9D0F }}
           app_location: './Generic.client-master'
-          app_artifact_location: "dist"  # Update this with the relative build path
+          app_artifact_location:  "dist/generic.client/" # Update this with the relative build path
           api_location: ''
           action: 'upload'
