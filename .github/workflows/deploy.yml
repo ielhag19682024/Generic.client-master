@@ -14,29 +14,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Change into the project directory
-      - name: Navigate to project directory
-        run: cd Generic.client-master
-
-      # Step 3: Set up Node.js
+      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      # Step 4: Install dependencies
+      # Step 3: Install dependencies
       - name: Install dependencies
-        working-directory: Generic.client-master
         run: npm install
 
-      # Step 5: Build the Angular app
+      # Step 4: Build the Angular app
       - name: Build the Angular app
-        working-directory: Generic.client-master
         run: npm run build -- --prod
 
-      # Step 6: Deploy to Azure Static Web Apps
+      # Step 5: Deploy to Azure Static Web Apps
       - name: Deploy to Azure Static Web Apps
         uses: azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_MUSHROOM_07E2D9D0F }}
-          app_location: Generic.client-master/dist/generic.client
+          app_location: dist/generic.client
+
