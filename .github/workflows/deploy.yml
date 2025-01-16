@@ -22,12 +22,10 @@ jobs:
 
       # Step 3: Install dependencies
       - name: Install dependencies
-        working-directory: /Users/ibrahimelhag/Documents/PocProject/Generic.client-master
         run: npm install
 
       # Step 4: Build the Angular app
       - name: Build the Angular app
-        working-directory: /Users/ibrahimelhag/Documents/PocProject/Generic.client-master
         run: npm run build -- --prod
 
       # Step 5: Deploy to Azure Static Web Apps
@@ -35,5 +33,4 @@ jobs:
         uses: azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_MUSHROOM_07E2D9D0F }}
-          app_location: /Users/ibrahimelhag/Documents/PocProject/Generic.client-master/dist/generic.client
-
+          app_location: dist/generic.client
