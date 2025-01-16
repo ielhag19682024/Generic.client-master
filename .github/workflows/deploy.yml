@@ -35,4 +35,7 @@ jobs:
         uses: azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          app_location: ./Generic.client-master/dist/generic.client
+          app_location: ./Generic.client-master
+          app_artifact_location: ./Generic.client-master/dist/generic.client
+          api_location: null  # Set to `null` if you have no API
+          deployment_environment: production
