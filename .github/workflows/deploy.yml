@@ -3,7 +3,7 @@ name: Deploy to Azure Static Web App
 on:
   push:
     branches:
-      - main
+      - main  # Change to your deployment branch if it's not "main".
   pull_request:
     types:
       - opened
@@ -39,3 +39,5 @@ jobs:
           app_location: './Generic.client-master'
           app_artifact_location: './Generic.client-master/dist/generic.client'
           api_location: ''
+          action: 'upload' # Explicitly specifying deployment action
+
