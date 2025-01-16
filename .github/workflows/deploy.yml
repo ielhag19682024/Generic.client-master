@@ -10,22 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
+      # Step 3: Install dependencies
       - name: Install dependencies
+        working-directory: /Users/ibrahimelhag/Documents/PocProject/Generic.client-master
         run: npm install
 
+      # Step 4: Build the Angular app
       - name: Build the Angular app
+        working-directory: /Users/ibrahimelhag/Documents/PocProject/Generic.client-master
         run: npm run build -- --prod
 
+      # Step 5: Deploy to Azure Static Web Apps
       - name: Deploy to Azure Static Web Apps
         uses: azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          app_location: "dist/generic.client"
+          app_location: /Users/ibrahimelhag/Documents/PocProject/Generic.client-master/dist/generic.client
+
