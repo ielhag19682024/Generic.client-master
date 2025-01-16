@@ -1,43 +1,37 @@
+# Update the app_artifact_location to match your local build folder structure
 name: Deploy to Azure Static Web App
 
 on:
   push:
     branches:
-      - main  # Change to your deployment branch if it's not "main".
+      - main  # or your target branch
   pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
     branches:
-      - main
+      - main  # or your target branch
 
 jobs:
-  build_and_deploy_job:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
 
-      - name: Install Dependencies
-        run: npm install
-        working-directory: ./Generic.client-master
+    - name: Install Dependencies
+      run: npm install
 
-      - name: Build Angular App
-        run: npm run build -- --configuration production
-        working-directory: ./Generic.client-master
+    - name: Build the app
+      run: npm run build -- --configuration production
 
-      - name: Deploy to Azure Static Web App
-        uses: azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_MUSHROOM_07E2D9D0F }}
-          app_location: './Generic.client-master'
-          app_artifact_location: 'Generic.client-master/dist/generic.client'
-          api_location: ''
-          action: 'upload' # Explicitly specifying deployment action
-
+    - name: Deploy to Azure Static Web App
+      uses: azure/static-web-apps-deploy@v1
+      with:
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_MUSHROOM_07E2D9D0F }}
+        app_location: "/"  # This can be the root folder of your repository
+        app_artifact_location: "dist/generic.client"  # Update this with the relative build path
+        api_location: ""  # If you have an API folder, set it, otherwise leave empty
