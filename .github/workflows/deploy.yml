@@ -20,21 +20,20 @@ jobs:
         with:
           node-version: '18.x'
 
-      # Step 3: Verify Node.js version
-      - name: Verify Node.js Version
-        run: node -v
-
-      # Step 4: Install dependencies
+      # Step 3: Install dependencies
       - name: Install dependencies
+        working-directory: ./Generic.client-master
         run: npm install
 
-      # Step 5: Build the Angular app
+      # Step 4: Build the Angular app
       - name: Build the Angular app
+        working-directory: ./Generic.client-master
         run: npm run build -- --prod
 
-      # Step 6: Deploy to Azure Static Web Apps
+      # Step 5: Deploy to Azure Static Web Apps
       - name: Deploy to Azure Static Web Apps
         uses: azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_MUSHROOM_07E2D9D0F }}
-          app_location: dist/generic.client
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          app_location: ./Generic.client-master/dist/generic.client
+
