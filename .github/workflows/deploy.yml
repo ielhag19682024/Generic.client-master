@@ -1,37 +1,42 @@
-# Update the app_artifact_location to match your local build folder structure
 name: Deploy to Azure Static Web App
 
 on:
   push:
     branches:
-      - main  # or your target branch
+      - main  # Or your branch name
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
     branches:
-      - main  # or your target branch
+      - main
 
 jobs:
-  build:
+  build_and_deploy_job:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./Generic.client-master
 
-    - name: Build the app
-      run: npm run build -- --configuration production
+      - name: Build Angular App
+        run: npm run build -- --configuration production
+        working-directory: ./Generic.client-master
 
-    - name: Deploy to Azure Static Web App
-      uses: azure/static-web-apps-deploy@v1
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_MUSHROOM_07E2D9D0F }}
-        app_location: "/"  # This can be the root folder of your repository
-        app_artifact_location: "dist"  # Update this with the relative build path
-        api_location: ""  # If you have an API folder, set it, otherwise leave empty
+      - name: Deploy to Azure Static Web App
+        uses: azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_MUSHROOM_07E2D9D0F }}
+          app_location: './Generic.client-master'
+          app_artifact_location: "dist"  # Update this with the relative build path
+          api_location: ''
+          action: 'upload'
